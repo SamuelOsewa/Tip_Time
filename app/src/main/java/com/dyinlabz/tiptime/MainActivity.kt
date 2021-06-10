@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.dyinlabz.tiptime.databinding.ActivityMainBinding
 import java.text.NumberFormat
 
+// Create a binding object for the all the views to be bound to for easy access
+// The object is of type ActivityMainBinding class
 lateinit var binding: ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // This line accesses the view from the binding object which was created in line 10
         binding.calculateButton.setOnClickListener { calculateTip() }
 
 
@@ -38,6 +41,8 @@ class MainActivity : AppCompatActivity() {
             kotlin.math.ceil(tip)
         }
 
+        // This NumberFormat method is used to access the getCurrencyInstance method for the number
+        // to be in currency
         val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
     }
